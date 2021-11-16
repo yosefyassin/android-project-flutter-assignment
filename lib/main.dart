@@ -616,6 +616,7 @@ class _LoginScreen extends State<LoginScreen> {
     TextEditingController _confirmPassword = new TextEditingController();
     bool validation = true;
 
+    String? _error = validation ? null : 'Passwords must match';
 
     return Scaffold(
         key: scaffoldKey,
