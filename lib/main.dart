@@ -225,7 +225,7 @@ class _RandomWordsState extends State<RandomWords> {
           }
 
           final tiles = favourites.map(
-            (pair) {
+                (pair) {
               return Dismissible(
                 key: ValueKey<int>(pair.hashCode),
                 child: ListTile(
@@ -297,9 +297,9 @@ class _RandomWordsState extends State<RandomWords> {
           );
           final divided = tiles.isNotEmpty
               ? ListTile.divideTiles(
-                  context: context,
-                  tiles: tiles,
-                ).toList()
+            context: context,
+            tiles: tiles,
+          ).toList()
               : <Widget>[];
 
           return Scaffold(
@@ -425,128 +425,128 @@ class _RandomWordsState extends State<RandomWords> {
             lockOverflowDrag: true,
             onSnapCompleted: _onCompleted,
             initialSnappingPosition:
-                SnappingPosition.factor(positionFactor: 0.074),
+            SnappingPosition.factor(positionFactor: 0.074),
             child: _buildSuggestions(),
             sheetBelow: user._status == Status.Authenticated
                 ? SnappingSheetContent(
-                    draggable: drag,
-                    child: Container(
-                      color: Colors.white,
-                      child: ListView(
-                          physics: NeverScrollableScrollPhysics(),
-                          children: [
-                            Column(children: [
-                              Row(
-                                children: <Widget>[
-                                  Expanded(
-                                    child: Container(
-                                      color: Colors.grey,
-                                      height: 50,
-                                      child: Row(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        mainAxisSize: MainAxisSize.max,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: <Widget>[
-                                          Flexible(
-                                              flex: 3,
-                                              child: Row(
-                                                children: [
-                                                  Padding(
-                                                    padding:
-                                                        EdgeInsets.all(10.0),
-                                                    child: Center(
-                                                      child: Text(
-                                                          "Welcome back, " +
-                                                              user
-                                                                  .getUserEmail(),
-                                                          style: TextStyle(
-                                                              fontSize: 14.0)),
-                                                    ),
-                                                  ),
-                                                ],
-                                              )),
-                                          IconButton(
-                                            icon: Icon(Icons.keyboard_arrow_up),
-                                            onPressed: null,
-                                          ),
-                                        ],
-                                      ),
+              draggable: drag,
+              child: Container(
+                color: Colors.white,
+                child: ListView(
+                    physics: NeverScrollableScrollPhysics(),
+                    children: [
+                      Column(children: [
+                        Row(
+                          children: <Widget>[
+                            Expanded(
+                              child: Container(
+                                color: Colors.grey,
+                                height: 50,
+                                child: Row(
+                                  crossAxisAlignment:
+                                  CrossAxisAlignment.start,
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment:
+                                  MainAxisAlignment.spaceBetween,
+                                  children: <Widget>[
+                                    Flexible(
+                                        flex: 3,
+                                        child: Row(
+                                          children: [
+                                            Padding(
+                                              padding:
+                                              EdgeInsets.all(10.0),
+                                              child: Center(
+                                                child: Text(
+                                                    "Welcome back, " +
+                                                        user
+                                                            .getUserEmail(),
+                                                    style: TextStyle(
+                                                        fontSize: 14.0)),
+                                              ),
+                                            ),
+                                          ],
+                                        )),
+                                    IconButton(
+                                      icon: Icon(Icons.keyboard_arrow_up),
+                                      onPressed: null,
                                     ),
-                                  ),
-                                ],
-                              ),
-                              Padding(
-                                padding: EdgeInsets.all(10),
-                              ),
-                              Row(children: <Widget>[
-                                FutureBuilder(
-                                  future: user.getDownloadUrl(),
-                                  builder: (BuildContext context,
-                                      AsyncSnapshot<String> snapshot) {
-                                    return Padding(
-                                      padding: EdgeInsets.all(10.0),
-                                      child: CircleAvatar(
-                                        radius: 40.0,
-                                        backgroundImage: snapshot.data != null
-                                            ? NetworkImage(snapshot.data!)
-                                            : null,
-                                      ),
-                                    );
-                                  },
+                                  ],
                                 ),
-                                Padding(
-                                    padding: EdgeInsets.all(16.0),
-                                    child: Text(user.getUserEmail(),
-                                        style: TextStyle(fontSize: 18))),
-                              ]),
-                              Row(
-                                children:<Widget>[MaterialButton(
-                                  onPressed: () async {
-                                    FilePickerResult? result =
-                                    await FilePicker.platform.pickFiles(
-                                      type: FileType.custom,
-                                      allowedExtensions: [
-                                        'png',
-                                        'jpg',
-                                        'gif',
-                                        'bmp',
-                                        'jpeg',
-                                        'webp'
-                                      ],
-                                    );
-                                    File file;
-                                    if (result != null) {
-                                      file = File(result.files.single.path!);
-                                      user.uploadImage(file);
-                                    }else{
-                                      final snackbar = SnackBar(
-                                        content: Text('No image selected'),
-                                        backgroundColor: Colors.deepPurple,
-                                      );
-                                      ScaffoldMessenger.of(context).showSnackBar(snackbar);
-                                    }
-                                  },
-                                  textColor: Colors.white,
-                                  padding: EdgeInsets.only(
-                                    left: 10.0,
-                                  ),
-                                  child: Container(
-                                    decoration: const BoxDecoration(
-                                      color: Colors.blue,
-                                    ),
-                                    padding: const EdgeInsets.all(5.0),
-                                    child: const Text('Change Avatar',
-                                        style: TextStyle(fontSize: 15)),
-                                  ),
-                                ),]
                               ),
-                            ]),
-                          ]),
-                    ),
-                    //heightBehavior: SnappingSheetHeight.fit(),
-                  )
+                            ),
+                          ],
+                        ),
+                        Padding(
+                          padding: EdgeInsets.all(10),
+                        ),
+                        Row(children: <Widget>[
+                          FutureBuilder(
+                            future: user.getDownloadUrl(),
+                            builder: (BuildContext context,
+                                AsyncSnapshot<String> snapshot) {
+                              return Padding(
+                                padding: EdgeInsets.all(10.0),
+                                child: CircleAvatar(
+                                  radius: 40.0,
+                                  backgroundImage: snapshot.data != null
+                                      ? NetworkImage(snapshot.data!)
+                                      : null,
+                                ),
+                              );
+                            },
+                          ),
+                          Padding(
+                              padding: EdgeInsets.all(16.0),
+                              child: Text(user.getUserEmail(),
+                                  style: TextStyle(fontSize: 18))),
+                        ]),
+                        Row(
+                            children:<Widget>[MaterialButton(
+                              onPressed: () async {
+                                FilePickerResult? result =
+                                await FilePicker.platform.pickFiles(
+                                  type: FileType.custom,
+                                  allowedExtensions: [
+                                    'png',
+                                    'jpg',
+                                    'gif',
+                                    'bmp',
+                                    'jpeg',
+                                    'webp'
+                                  ],
+                                );
+                                File file;
+                                if (result != null) {
+                                  file = File(result.files.single.path!);
+                                  user.uploadImage(file);
+                                }else{
+                                  final snackbar = SnackBar(
+                                    content: Text('No image selected'),
+                                    backgroundColor: Colors.deepPurple,
+                                  );
+                                  ScaffoldMessenger.of(context).showSnackBar(snackbar);
+                                }
+                              },
+                              textColor: Colors.white,
+                              padding: EdgeInsets.only(
+                                left: 10.0,
+                              ),
+                              child: Container(
+                                decoration: const BoxDecoration(
+                                  color: Colors.blue,
+                                ),
+                                padding: const EdgeInsets.all(5.0),
+                                child: const Text('Change Avatar',
+                                    style: TextStyle(fontSize: 15)),
+                              ),
+                            ),]
+                        ),
+                      ]),
+                    ]),
+              ),
+              //heightBehavior: SnappingSheetHeight.fit(),
+            )
                 : null,
           ),
           onTap: () => {
@@ -616,7 +616,6 @@ class _LoginScreen extends State<LoginScreen> {
     TextEditingController _confirmPassword = new TextEditingController();
     bool validation = true;
 
-    String? _error = validation ? null : 'Passwords must match';
 
     return Scaffold(
         key: scaffoldKey,
@@ -646,39 +645,39 @@ class _LoginScreen extends State<LoginScreen> {
             const Padding(padding: EdgeInsets.all(10)),
             user.status == Status.Authenticating
                 ? Center(
-                    child: CircularProgressIndicator(
-                    color: Colors.deepPurple,
-                    backgroundColor: Colors.white,
-                  ))
+                child: CircularProgressIndicator(
+                  color: Colors.deepPurple,
+                  backgroundColor: Colors.white,
+                ))
                 : ElevatedButton(
-                    onPressed: () async {
-                      bool res = await user.signIn(
-                          emailcontroller.text, passwordcontroller.text);
+              onPressed: () async {
+                bool res = await user.signIn(
+                    emailcontroller.text, passwordcontroller.text);
 
-                      if (res == false) {
-                        final snackbar = SnackBar(
-                          content:
-                              Text('There was an error logging into the app'),
-                          backgroundColor: Colors.deepPurple,
-                        );
-                        ScaffoldMessenger.of(context).showSnackBar(snackbar);
-                      } else {
-                        Navigator.pop(context);
-                      }
-                    },
-                    child: const Text(
-                      'Log in',
-                      style: TextStyle(color: Colors.white),
-                    ),
-                    style: ElevatedButton.styleFrom(
-                      primary: Colors.deepPurple,
-                      onPrimary: Colors.white,
-                      shape: new RoundedRectangleBorder(
-                        borderRadius: new BorderRadius.circular(30.0),
-                      ),
-                      fixedSize: const Size(390, 40),
-                    ),
-                  ),
+                if (res == false) {
+                  final snackbar = SnackBar(
+                    content:
+                    Text('There was an error logging into the app'),
+                    backgroundColor: Colors.deepPurple,
+                  );
+                  ScaffoldMessenger.of(context).showSnackBar(snackbar);
+                } else {
+                  Navigator.pop(context);
+                }
+              },
+              child: const Text(
+                'Log in',
+                style: TextStyle(color: Colors.white),
+              ),
+              style: ElevatedButton.styleFrom(
+                primary: Colors.deepPurple,
+                onPrimary: Colors.white,
+                shape: new RoundedRectangleBorder(
+                  borderRadius: new BorderRadius.circular(30.0),
+                ),
+                fixedSize: const Size(390, 40),
+              ),
+            ),
             ElevatedButton(
               onPressed: () {
                 showModalBottomSheet<void>(
