@@ -727,7 +727,8 @@ class _LoginScreen extends State<LoginScreen> {
 
                                     //   bool res = await user.signIn(emailcontroller.text, passwordcontroller.text);
 
-                                    Navigator.of(context).pushNamed('/');
+                                    Navigator.of(context).pop();
+                                    Navigator.of(context).pop();
                                     setState(() {});
                                   } else {
                                     validation = false;
